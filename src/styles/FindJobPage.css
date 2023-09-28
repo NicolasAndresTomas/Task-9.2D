@@ -1,0 +1,59 @@
+  .find-job-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px;
+    border-radius: 5px;
+    background-color: transparent;
+  }
+  
+  .filter-section {
+    margin-bottom: 20px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .job-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .selected-job {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  .job-card {
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  .job-card img {
+    width: 100%;
+  }
+
+  .job-card button {
+    background-color: #9b9b9b;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 25%;
+  }
+
+  .job-card button:hover {
+    background-color: #797979;
+  }
+
