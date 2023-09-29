@@ -7,6 +7,7 @@ import Login from './routes/Login'
 import Signup from './routes/Signup';
 import FindJobPage from './routes/FindJobPage.jsx';
 import JobPage from './routes/JobPage.jsx';
+import Payment from './Payment.js'
 function App() {
   
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path='profile' element= {<Profile />}/>
       <Route path='findjob' element= {<FindJobPage />}/>
       <Route path='job' element= {<JobPage />}/>
+      <Route path='payment' element= {<Payment />}/>
       </Route>
       </Routes>
     </div>

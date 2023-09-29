@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { uploadImageToStorage, saveJobPostingToFirestore } from './utils/firebase';
 import '../src/styles/AddJobPost.css';
+import {useNavigate} from 'react-router-dom'
 
 const AddJobPost = () => {
   const [jobData, setJobData] = useState({
@@ -15,6 +16,8 @@ const AddJobPost = () => {
     experience: '', 
     image: null,
   });
+
+  const navigate = useNavigate()
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -55,6 +58,7 @@ const AddJobPost = () => {
         firestoreData.paymentMax = jobData.paymentMax;
         firestoreData.workingHours = jobData.workingHours;
         firestoreData.experience = jobData.experience;
+        navigate('/payment')
       }
 
       await saveJobPostingToFirestore(firestoreData);
@@ -125,18 +129,28 @@ const AddJobPost = () => {
         </div>
 
         {jobData.jobType === 'employment' && (
-          <div className="form-group">
-            <label htmlFor="experience">Experienced in (for at least):</label>
-            <input className="form-control" type="text" id="experience" name="experience" value={jobData.experience} onChange={handleInputChange} />
+          <div>
+            <div className="form-group">
+              <label htmlFor="experience">Experienced in (for at least):</label>
+              <input className="form-control" type="text" id="experience" name="experience" value={jobData.experience} onChange={handleInputChange} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="image">Image:</label>
+              <input className="form-control" type="file" id="image" name="image" accept="image/*" onChange={handleImageUpload} />
+            </div>
+            <button className="btn btn-primary" type="button" onClick={handleSubmit}>Pay</button>
           </div>
         )}
 
-        <div className="form-group">
-          <label htmlFor="image">Image:</label>
-          <input className="form-control" type="file" id="image" name="image" accept="image/*" onChange={handleImageUpload} />
-        </div>
-
-        <button className="btn btn-primary" type="button" onClick={handleSubmit}>Post</button>
+        {jobData.jobType === 'freelance' && (
+          <div>
+            <div className="form-group">
+              <label htmlFor="image">Image:</label>
+              <input className="form-control" type="file" id="image" name="image" accept="image/*" onChange={handleImageUpload} />
+            </div>
+            <button className="btn btn-primary" type="button" onClick={handleSubmit}>Post</button>
+          </div>
+        )}
       </form>
     </div>
   );
